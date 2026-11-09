@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODDYAMO — Official Developer Brand & Portfolio | Anmol Patel</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Official website of CODDYAMO — Founded by Anmol Patel. BUILD. CODE. CREATE. Explore open-source projects, Python apps, web applications, and developer resources.">
+    <meta name="keywords" content="CODDYAMO, Anmol Patel, Developer Portfolio, Python, Web Development, Open Source, BCA Developer">
+    <meta name="author" content="Anmol Patel">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="CODDYAMO — Official Developer Brand & Portfolio">
+    <meta property="og:description" content="Explore source code, projects, and developer resources created by Anmol Patel.">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#05070F',
+                        'brand-navy': '#0A0E1A',
+                        'brand-card': '#111827',
+                        'brand-purple': '#A855F7',
+                        'brand-cyan': '#06B6D4',
+                        'brand-pink': '#EC4899'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'glow-pulse': 'glow 3s infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(168, 85, 247, 0.4), 0 0 30px rgba(6, 182, 212, 0.2)' },
+                            '100%': { boxShadow: '0 0 25px rgba(168, 85, 247, 0.8), 0 0 50px rgba(6, 182, 212, 0.5)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    
+</head>
+
+<body class="bg-brand-dark text-slate-100 min-h-screen selection:bg-brand-purple selection:text-white transition-colors duration-300">
+
+    <!-- ================= STICKY NAVIGATION BAR ================= -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/80 border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="relative w-11 h-11 flex items-center justify-center rounded-full p-[2px] bg-gradient-to-br from-brand-purple to-brand-cyan shadow-lg shadow-brand-purple/20 transition-transform duration-300 group-hover:scale-105">
+                        <img id="headerLogoImg" src="profile_amo.png" alt="CODDYAMO Logo" class="w-full h-full object-cover rounded-full" onerror="handleImageError(this, 'logo')">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl tracking-wider text-white group-hover:text-brand-purple transition-colors">CODDYAMO</span>
+                        <span class="text-[9px] tracking-widest text-brand-cyan font-mono -mt-1 font-semibold">BUILD. CODE. CREATE.</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                    <a href="#home" class="hover:text-brand-purple transition-colors">Home</a>
+                    <a href="#about" class="hover:text-brand-purple transition-colors">About</a>
+                    <a href="#founder" class="hover:text-brand-purple transition-colors">Founder</a>
+                    <a href="#skills" class="hover:text-brand-purple transition-colors">Skills</a>
+                    <a href="#experience" class="hover:text-brand-purple transition-colors">Experience</a>
+                    <a href="#projects" class="hover:text-brand-purple transition-colors">Projects</a>
+                    <a href="#github-repos" class="hover:text-brand-purple transition-colors">GitHub</a>
+                    <a href="#downloads" class="hover:text-brand-purple transition-colors">Downloads</a>
+                    <a href="#contact" class="hover:text-brand-purple transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Buttons & Theme Switcher -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="#telegram" class="px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-brand-purple to-brand-cyan text-white shadow-lg shadow-brand-purple/20 hover:opacity-90 transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-telegram text-base"></i>
+                        <span>Join Community</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center gap-3">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="p-2 rounded-xl text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-navy/95 border-b border-white/10 px-4 pt-2 pb-6 space-y-3 font-medium text-sm">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">About CODDYAMO</a>
+            <a href="#founder" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Meet the Founder</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Technical Skills</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Experience</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Featured Projects</a>
+            <a href="#github-repos" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">All Repositories</a>
+            <a href="#downloads" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Downloads & ZIPs</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-brand-purple">Contact</a>
+            <a href="#telegram" onclick="toggleMobileMenu()" class="inline-flex items-center gap-2 w-full justify-center py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-cyan text-white text-xs font-semibold">
+                <i class="fa-brands fa-telegram"></i> Telegram Community
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= 1. HERO SECTION ================= -->
+    <section id="home" class="relative pt-12 pb-24 md:py-28 overflow-hidden">
+        <!-- Futuristic Background Glow Shapes -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-purple/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-brand-cyan/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-brand-purple/30 text-brand-cyan text-xs font-mono font-medium">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                        WELCOME TO THE OFFICIAL BRAND PORTFOLIO
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                        <span class="block">CODDYAMO</span>
+                        <span class="gradient-text font-mono text-3xl sm:text-5xl mt-2 block">BUILD. CODE. CREATE.</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        A modern technology brand and developer ecosystem where creators, students, and engineers discover real-world web applications, explore open-source code, and download development resources.
+                    </p>
+
+                    <!-- Hero Call-to-Actions -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-brand-purple to-brand-cyan text-white shadow-xl shadow-brand-purple/25 hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                            <i class="fa-solid fa-rocket"></i> Explore Projects
+                        </a>
+                        <a href="https://github.com/Anmolpatel0" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-xl text-sm font-semibold bg-white/5 border border-white/10 hover:border-brand-cyan text-slate-200 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+                            <i class="fa-brands fa-github text-lg"></i> GitHub Profile
+                        </a>
+                    </div>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="pt-6 border-t border-white/5 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs text-slate-400 font-mono">
+                        <span><i class="fa-brands fa-html5 text-orange-500 mr-1"></i> HTML5</span>
+                        <span>•</span>
+                        <span><i class="fa-brands fa-css3-alt text-blue-500 mr-1"></i> CSS3</span>
+                        <span>•</span>
+                        <span><i class="fa-brands fa-js text-yellow-400 mr-1"></i> JavaScript</span>
+                        <span>•</span>
+                        <span><i class="fa-brands fa-python text-blue-400 mr-1"></i>• Python</span>
+                        <span><i class="fa-brands fa-c++ text-blue-400 mr-1"></i>• c++</span>
+                        <span><i class="fa-brands fa-C# text-blue-400 mr-1"></i>•C#</span>
+
+                    </div>
+                </div>
+
+                <!-- Right Hero: Founder & Brand Card -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="relative w-full max-w-md glass-panel p-8 rounded-3xl text-center flex flex-col items-center border border-white/10 shadow-2xl">
+                        
+                        <!-- Animated Brand Logo Badge -->
+                        <div class="relative w-28 h-28 mb-6 flex items-center justify-center">
+                            <div class="absolute inset-0 rounded-full border-2 border-dashed border-brand-purple animate-spin-slow"></div>
+                            <div class="w-24 h-24 rounded-full p-[2px] bg-gradient-to-br from-brand-purple to-brand-cyan shadow-xl">
+                                <!-- add logo picutre here  -->
+                                <img id="heroLogoImg" src="profile_amo.png" alt="CODDYAMO Brand Logo" class="w-full h-full object-cover rounded-full" onerror="handleImageError(this, 'logo')">
+                            </div>
+                        </div>
+
+                        <!-- Founder Profile Snapshot -->
+                        <div class="relative mb-4">
+                            <div class="w-28 h-28 rounded-full p-[3px] bg-gradient-to-tr from-brand-purple via-brand-cyan to-brand-purple shadow-lg shadow-brand-purple/30">
+                                <img id="heroFounderImg" src="profile.jpeg" alt="Anmol Patel — Founder of CODDYAMO" class="w-full h-full object-cover rounded-full" onerror="handleImageError(this, 'founder')">
+                            </div>
+                            <span class="absolute bottom-1 right-1 bg-emerald-500 border-2 border-brand-dark w-5 h-5 rounded-full" title="Active Developer"></span>
+                        </div>
+
+                        <h3 class="font-heading font-bold text-xl text-white" id="founderNameHero">Anmol Patel</h3>
+                        <p class="text-brand-purple text-sm font-medium mb-3">Founder & Creator of CODDYAMO</p>
+                        
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300">
+                            <i class="fa-solid fa-graduation-cap text-brand-cyan"></i>
+                            <span>BCA Candidate (Grad 2027)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 2. ABOUT CODDYAMO ================= -->
+    <section id="about" class="py-20 bg-brand-navy/50 border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono font-semibold text-brand-cyan uppercase tracking-widest mb-2">Platform Vision</h2>
+                <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">About CODDYAMO</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-brand-purple to-brand-cyan mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-purple/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-white mb-3">Project Discovery</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Explore practical web applications, Python automation tools, and software solutions designed with modern UI standards and robust logic.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-cyan/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-white mb-3">Open Source & Code</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Complete access to public GitHub repositories, transparent source code, setup instructions, and downloadable project ZIP archives.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:border-brand-pink/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-pink/10 text-brand-pink flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-white mb-3">Developer Learning</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Created to empower aspiring software developers, students, and technology enthusiasts through practical development insights and shared code.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 3. MEET THE FOUNDER ================= -->
+    <section id="founder" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-white/10">
+            <!-- Background Glow -->
+            <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Founder Actual Photograph -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-brand-purple via-brand-cyan to-brand-purple blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative w-60 h-60 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-brand-dark bg-brand-dark shadow-2xl">
+                            <img id="aboutFounderImg" src="profile.jpeg" alt="Anmol Patel — Founder of CODDYAMO" class="w-full h-full object-cover" onerror="handleImageError(this, 'founder')">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Founder Bio -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <span class="text-xs font-mono font-semibold text-brand-purple uppercase tracking-widest">Founder Profile</span>
+                        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mt-1" id="founderFullName">Anmol Patel</h2>
+                        <p class="text-brand-cyan font-medium text-sm sm:text-base mt-1" id="founderTitle">Founder of CODDYAMO | Aspiring Full-Stack Developer</p>
+                    </div>
+
+                    <p class="text-slate-300 text-base leading-relaxed bg-white/5 p-5 rounded-2xl border border-white/5 italic">
+                        "I am Anmol Patel, a BCA student and aspiring developer interested in web development, Python, artificial intelligence, and building useful digital products. I enjoy creating projects, exploring new technologies, learning through practical development, and sharing my work with the developer community through CODDYAMO."
+                    </p>
+
+                    <!-- Academic Details -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono pt-2">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="text-slate-400 block mb-1">DEGREE</span>
+                            <span class="text-white font-semibold text-sm">Bachelor of Computer Applications (BCA)</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="text-slate-400 block mb-1">INSTITUTION & LOCATION</span>
+                            <span class="text-white font-semibold text-sm">Gyan Ganga College of Excellence</span>
+                            <span class="text-slate-400 block text-[11px]">Jabalpur, Madhya Pradesh, India</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="text-slate-400 block mb-1">EXPECTED GRADUATION</span>
+                            <span class="text-brand-cyan font-semibold text-sm">2027</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <span class="text-slate-400 block mb-1">FOCUS AREAS</span>
+                            <span class="text-brand-purple font-semibold text-sm">Web, Python & AI Tools</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 4. TECHNICAL SKILLS MATRIX ================= -->
+    <section id="skills" class="py-20 bg-brand-navy/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono font-semibold text-brand-purple uppercase tracking-widest mb-2">Capabilities</h2>
+                <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">Technical Skillset</h3>
+                <p class="text-slate-400 text-sm mt-2">Transparent proficiency indicators based on current practical learning.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Web Development -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-brand-purple/20 text-brand-purple flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white">Web Development</h4>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">HTML5</span>
+                                <span class="text-brand-purple font-mono text-xs">Intermediate</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[75%] h-full bg-brand-purple rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">CSS3 / Tailwind</span>
+                                <span class="text-brand-purple font-mono text-xs">Intermediate</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[70%] h-full bg-brand-purple rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">JavaScript</span>
+                                <span class="text-brand-cyan font-mono text-xs">Basic</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[45%] h-full bg-brand-cyan rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programming Languages -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-brand-cyan/20 text-brand-cyan flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white">Programming</h4>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">Python</span>
+                                <span class="text-brand-cyan font-mono text-xs">Basic</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[50%] h-full bg-brand-cyan rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">C++</span>
+                                <span class="text-brand-cyan font-mono text-xs">Basic</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[40%] h-full bg-brand-cyan rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-slate-200">C#</span>
+                                <span class="text-brand-cyan font-mono text-xs">Basic</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-[35%] h-full bg-brand-cyan rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-brand-pink/20 text-brand-pink flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white">AI Tools & Workflows</h4>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                            <span class="text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-robot text-brand-purple"></i> ChatGPT
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Prompting & Coding Assist</span>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                            <span class="text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-sparkles text-brand-cyan"></i> Google Gemini
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Research & Problem Solving</span>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                            <span class="text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-brand-pink"></i> Claude
+                            </span>
+                            <span class="text-xs font-mono text-slate-400">Architecture Planning</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 5. INTERNSHIP EXPERIENCE TIMELINE ================= -->
+    <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <h2 class="text-xs font-mono font-semibold text-brand-cyan uppercase tracking-widest mb-2">Career Journey</h2>
+            <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">Internship Experience</h3>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto">
+            <!-- Timeline Vertical Line -->
+            <div class="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-purple via-brand-cyan to-transparent -translate-x-1/2"></div>
+
+            <!-- Internship Item 1 -->
+            <div class="relative mb-12 sm:mb-16 flex flex-col sm:flex-row items-start">
+                <div class="flex items-center sm:w-1/2 justify-start sm:justify-end sm:pr-8 pl-10 sm:pl-0">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/10 w-full hover:border-brand-purple transition-all">
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+                            Completed
+                        </span>
+                        <h4 class="font-heading font-bold text-lg text-white">Web Development Intern</h4>
+                        <p class="text-brand-purple font-medium text-sm">Thrinax / Thiranex</p>
+                        <p class="text-slate-300 text-xs mt-3 leading-relaxed">
+                            Worked on front-end web design, responsive layouts, standard web development workflows, and HTML/CSS structure optimization.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Center Node -->
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 top-6 w-8 h-8 rounded-full bg-brand-dark border-2 border-brand-purple flex items-center justify-center text-brand-purple shadow-lg shadow-brand-purple/50">
+                    <i class="fa-solid fa-briefcase text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Internship Item 2 -->
+            <div class="relative flex flex-col sm:flex-row items-start">
+                <div class="flex items-center sm:w-1/2 sm:ml-auto sm:pl-8 pl-10">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/10 w-full hover:border-brand-cyan transition-all">
+                        <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+                            Completed
+                        </span>
+                        <h4 class="font-heading font-bold text-lg text-white">Python Intern</h4>
+                        <p class="text-brand-cyan font-medium text-sm">Interncircle</p>
+                        <p class="text-slate-300 text-xs mt-3 leading-relaxed">
+                            Gained practical exposure to Python programming, basic scripting logic, application flow, and introductory programming concepts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Center Node -->
+                <div class="absolute left-4 sm:left-1/2 -translate-x-1/2 top-6 w-8 h-8 rounded-full bg-brand-dark border-2 border-brand-cyan flex items-center justify-center text-brand-cyan shadow-lg shadow-brand-cyan/50">
+                    <i class="fa-solid fa-code text-xs"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 6. FEATURED PROJECTS ================= -->
+    <section id="projects" class="py-20 bg-brand-navy/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono font-semibold text-brand-purple uppercase tracking-widest mb-2">Handcrafted Applications</h2>
+                <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">Featured Projects</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Project 1: TaskFlow Studio -->
+                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col hover:border-brand-purple/50 transition-all duration-300 group">
+                    <div class="h-48 bg-gradient-to-br from-purple-900/40 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-purple/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-brand-purple/20 text-brand-purple border border-brand-purple/30">Web App</span>
+                            <i class="fa-solid fa-check-double text-2xl text-brand-purple"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-2xl text-white z-10">TaskFlow Studio </h4>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            A smart and aesthetic task management application designed for organized workflow execution and task tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">HTML5</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">CSS3</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">JavaScript</span>
+                        </div>
+                        <div class="flex items-center gap-3 pt-2">
+                            <a href="https://anmolpatel0.github.io/to-do-list/" target="_blank" rel="noopener" class="flex-1 py-2 rounded-xl text-center text-xs font-semibold bg-brand-purple text-white hover:bg-brand-purple/90 transition-all">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                            <a href="https://github.com/Anmolpatel0/to-do-list" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                                <i class="fa-brands fa-github text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Personal Portfolio -->
+                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col hover:border-brand-cyan/50 transition-all duration-300 group">
+                    <div class="h-48 bg-gradient-to-br from-cyan-900/40 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30">Portfolio</span>
+                            <i class="fa-solid fa-user-astronaut text-2xl text-brand-cyan"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-2xl text-white z-10">Personal Portfolio</h4>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            Personal portfolio website showcasing developer achievements, responsive UI design, and interactive projects.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">HTML</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">Tailwind</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">JS</span>
+                        </div>
+                        <div class="flex items-center gap-3 pt-2">
+                            <a href="https://anmolpatel0.github.io/my-portfolio/" target="_blank" rel="noopener" class="flex-1 py-2 rounded-xl text-center text-xs font-semibold bg-brand-cyan text-slate-950 font-bold hover:bg-brand-cyan/90 transition-all">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                            <a href="https://github.com/Anmolpatel0/my-portfolio" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                                <i class="fa-brands fa-github text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Expense Tracker -->
+                <div class="glass-panel rounded-2xl overflow-hidden flex flex-col hover:border-brand-pink/50 transition-all duration-300 group">
+                    <div class="h-48 bg-gradient-to-br from-pink-900/40 to-slate-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brand-pink/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="flex justify-between items-start z-10">
+                            <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-brand-pink/20 text-brand-pink border border-brand-pink/30">Python / Streamlit</span>
+                            <i class="fa-solid fa-wallet text-2xl text-brand-pink"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-2xl text-white z-10">Expense Tracker</h4>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            A Python-based expense tracking application deployed on Streamlit Cloud for intuitive financial monitoring.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-[11px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">Python</span>
+                            <span class="px-2 py-0.5 rounded bg-white/5 text-slate-300">Streamlit</span>
+                        </div>
+                        <div class="flex items-center gap-3 pt-2">
+                            <a href="https://expensetrackerforyou.streamlit.app" target="_blank" rel="noopener" class="flex-1 py-2 rounded-xl text-center text-xs font-semibold bg-brand-pink text-white hover:bg-brand-pink/90 transition-all">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                            </a>
+                            <a href="https://github.com/Anmolpatel0" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                                <i class="fa-brands fa-github text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 7 & 8. LIVE GITHUB REST API INTEGRATION ================= -->
+    <section id="github-repos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-xs font-mono font-semibold text-brand-cyan uppercase tracking-widest mb-2">Live Integration</h2>
+            <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">All GitHub Repositories</h3>
+            <p class="text-slate-400 text-sm mt-2">Fetched dynamically via GitHub REST API for <span class="text-brand-cyan font-mono">@Anmolpatel0</span>.</p>
+        </div>
+
+       
+
+        </div>
+         <p>all repositire are in github :-
+            <a href="https://www.github.com/anmolpatel0/"><button><u>CLICK ME ! </u></button></a>   
+           <br> please tap click button and go on:-  https://www.github.com <br>all repsoitiry are on 
+            it you can easily download and preview reposotiries .zip format on your VS code👨🏻‍💻 . 
+
+         </p>       
+    </section>
+
+    <!-- ================= 9. PROJECT DOWNLOAD SYSTEM ================= -->
+    <section id="downloads" class="py-20 bg-brand-navy/50 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-mono font-semibold text-brand-purple uppercase tracking-widest mb-2">Resource Hub</h2>
+                <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white">Project Downloads & Source Code</h3>
+                <p class="text-slate-400 text-sm mt-2">Get direct access to source code ZIP packages and setup instructions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Package 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-purple">ZIP Archive</span>
+                            <i class="fa-solid fa-file-zipper text-xl text-brand-purple"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white mb-2">TaskFlow Studio Source</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Complete bundle including HTML, CSS, JavaScript files, and asset icons.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="openInstructions('TaskFlow Studio', '1. Extract ZIP archive.\\n2. Open index.html in any modern browser.\\n3. No server setup required.')" class="w-full py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                            Setup Instructions
+                        </button>
+                        <a href="https://github.com/Anmolpatel0/to-do-list/archive/refs/heads/main.zip" target="_blank" rel="noopener" class="w-full py-2.5 rounded-xl text-center text-xs font-semibold bg-brand-purple text-white hover:bg-brand-purple/90 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download ZIP
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-cyan">ZIP Archive</span>
+                            <i class="fa-solid fa-file-zipper text-xl text-brand-cyan"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white mb-2">Personal Portfolio Code</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Full website repository archive with custom Tailwind configuration.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="openInstructions('Personal Portfolio', '1. Unzip project folder.\\n2. Serve index.html using Live Server or host on GitHub Pages.')" class="w-full py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                            Setup Instructions
+                        </button>
+                        <a href="https://github.com/Anmolpatel0/my-portfolio/archive/refs/heads/main.zip" target="_blank" rel="noopener" class="w-full py-2.5 rounded-xl text-center text-xs font-semibold bg-brand-cyan text-slate-950 font-bold hover:bg-brand-cyan/90 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download ZIP
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-mono text-brand-pink">ZIP Archive</span>
+                            <i class="fa-solid fa-file-zipper text-xl text-brand-pink"></i>
+                        </div>
+                        <h4 class="font-heading font-bold text-lg text-white mb-2">Expense Tracker Code</h4>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                            Python Streamlit codebase for financial budgeting and analytics.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="openInstructions('Expense Tracker', '1. Install Python 3.9+.\\n2. Run: pip install streamlit\\n3. Execute: streamlit run app.py')" class="w-full py-2 rounded-xl text-xs font-semibold bg-white/5 border border-white/10 hover:bg-white/10 text-slate-200">
+                            Setup Instructions
+                        </button>
+                        <a href="https://github.com/Anmolpatel0" target="_blank" rel="noopener" class="w-full py-2.5 rounded-xl text-center text-xs font-semibold bg-brand-pink text-white hover:bg-brand-pink/90 transition-all flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-github"></i> Repository Access
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= 10. TELEGRAM COMMUNITY & SOCIAL MEDIA ================= -->
+    <section id="telegram" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Telegram Card -->
+            <div class="lg:col-span-7 glass-panel p-8 sm:p-10 rounded-3xl border border-brand-cyan/30 relative overflow-hidden">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-brand-cyan flex items-center justify-center text-3xl">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-2xl text-white">Join CODDYAMO Community</h3>
+                        <p class="text-xs font-mono text-brand-cyan">Official Telegram Developer Channel</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                    "Join our community to discover new projects, get source code ZIP files, explore development resources, and stay updated."
+                </p>
+
+                <button onclick="handleTelegramClick()" class="px-6 py-3.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-brand-cyan to-brand-purple text-white shadow-lg hover:opacity-90 transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-telegram text-base"></i> Join Telegram Channel
+                </button>
+            </div>
+
+            <!-- Social Media Cards -->
+            <div class="lg:col-span-5 space-y-4">
+                <a id="linkInstagram" href="#" target="_blank" rel="noopener" class="glass-panel p-4 rounded-2xl border border-white/10 hover:border-pink-500/50 flex items-center justify-between group transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-brands fa-instagram text-2xl text-pink-500"></i>
+                        <div>
+                            <span class="block text-xs text-slate-400 font-mono">INSTAGRAM</span>
+                            <span class="text-sm font-semibold text-white group-hover:text-pink-400 transition-colors" id="instaHandleText">@anmol._09_</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 group-hover:text-white">Follow <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </a>
+
+                <a id="linkLinkedin" href="#" target="_blank" rel="noopener" class="glass-panel p-4 rounded-2xl border border-white/10 hover:border-blue-500/50 flex items-center justify-between group transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-brands fa-linkedin text-2xl text-blue-500"></i>
+                        <div>
+                            <span class="block text-xs text-slate-400 font-mono">LINKEDIN</span>
+                            <span class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">Anmol Patel</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 group-hover:text-white">Connect <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </a>
+
+                <a id="linkGithub" href="#" target="_blank" rel="noopener" class="glass-panel p-4 rounded-2xl border border-white/10 hover:border-purple-500/50 flex items-center justify-between group transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-brands fa-github text-2xl text-purple-400"></i>
+                        <div>
+                            <span class="block text-xs text-slate-400 font-mono">GITHUB</span>
+                            <span class="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors">@Anmolpatel0</span>
+                        </div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400 group-hover:text-white">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= 11. CONTACT SECTION ================= -->
+    <section id="contact" class="py-20 bg-brand-navy/50 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-xs font-mono font-semibold text-brand-purple uppercase tracking-widest mb-2">Get In Touch</h2>
+            <h3 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6">Connect With Founder</h3>
+            <p class="text-slate-300 text-sm max-w-xl mx-auto mb-8">
+                Have a project inquiry, collaboration idea, or feedback regarding CODDYAMO projects? Reach out directly via email.
+            </p>
+
+            <a id="linkEmail" href="mailto:anmolpatel7803@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-purple to-brand-cyan text-white font-semibold shadow-xl shadow-brand-purple/20 hover:scale-105 transition-all">
+                <i class="fa-solid fa-envelope text-lg"></i>
+                <span id="emailAddrText">anmolpatel7803@gmail.com</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="py-12 border-t border-white/10 bg-brand-dark text-slate-400 text-xs font-mono">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="font-heading font-bold text-white text-base tracking-wider">CODDYAMO</span>
+                <span>— BUILD. CODE. CREATE.</span>
+            </div>
+            <div>
+                <span>Designed & Developed by </span>
+                <span class="text-white font-semibold">Anmol Patel</span>
+            </div>
+            <div>
+                © <span id="currentYear"></span> CODDYAMO. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Setup Instructions Modal -->
+    <div id="instructionModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-lg w-full border border-white/10 relative">
+            <button onclick="closeInstructions()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h4 class="font-heading font-bold text-xl text-white mb-4" id="modalTitle">Setup Instructions</h4>
+            <pre class="bg-brand-dark p-4 rounded-xl text-xs text-brand-cyan font-mono overflow-x-auto whitespace-pre-wrap leading-relaxed" id="modalContent"></pre>
+        </div>
+    </div>
+</body>
+</html>
